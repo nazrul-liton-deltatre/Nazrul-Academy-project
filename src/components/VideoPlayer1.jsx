@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import SpatialNavigation, { Focusable } from "react-js-spatial-navigation";
-import { dummyVideoList } from "./data";
+import { dummyVideoList } from "../data/data";
 
 import "shaka-player/dist/controls.css";
-import { AssetContext } from "./AssetContext";
+import { AssetContext } from "../AssetContext";
 const shaka = require("shaka-player/dist/shaka-player.ui.js");
 
 const VideoPLayer = () => {

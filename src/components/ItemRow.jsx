@@ -3,8 +3,8 @@ import SpatialNavigation, { Focusable } from "react-js-spatial-navigation";
 
 import { Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { dummyVideoList } from "./data";
-import { AssetContext } from "./AssetContext";
+import { dummyVideoList } from "../data/data";
+import { AssetContext } from "../AssetContext";
 
 const ItemRow = ({ rowTitle }) => {
 	const [active, setActive] = useState(false);

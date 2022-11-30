@@ -1,10 +1,10 @@
-import "./App.css";
+import "./styling/App.css";
 import "shaka-player/dist/controls.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { createContext, useState } from "react";
 
-import VideoPlayer from "./VideoPlayer1";
-import HomePage from "./HomePage";
+import VideoPlayer from "./components/VideoPlayer1";
+import HomePage from "./components/HomePage";
 import { AssetContext } from "./AssetContext";
 
 export const assetToViewIdContext = createContext();

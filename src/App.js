@@ -1,20 +1,34 @@
 import "./App.css";
 import "shaka-player/dist/controls.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { createContext, useState } from "react";
 
 import VideoPlayer from "./VideoPlayer1";
 import HomePage from "./HomePage";
+import { AssetContext } from "./AssetContext";
+
+export const assetToViewIdContext = createContext();
 
 function App() {
+	const [assetToViewObject, setAssetToViewObject] = useState();
+
 	return (
-		<div>
+		<AssetContext.Provider value={{ assetToViewObject, setAssetToViewObject }}>
 			<Router>
 				<Routes>
-					<Route path="/video:id" element={<VideoPlayer />} />
-					<Route path="/" element={<HomePage />} />
+					<Route
+						path="/video:id"
+						assetToViewObject={assetToViewObject}
+						element={<VideoPlayer />}
+					/>
+					<Route
+						path="/"
+						assetToViewObject={assetToViewObject}
+						element={<HomePage />}
+					/>
 				</Routes>
 			</Router>
-		</div>
+		</AssetContext.Provider>
 	);
 }
 

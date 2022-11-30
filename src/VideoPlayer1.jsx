@@ -1,14 +1,16 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import SpatialNavigation, { Focusable } from "react-js-spatial-navigation";
 import { dummyVideoList } from "./data";
 
 import "shaka-player/dist/controls.css";
+import { AssetContext } from "./AssetContext";
 const shaka = require("shaka-player/dist/shaka-player.ui.js");
 
 const VideoPLayer = () => {
 	const videoComponent = useRef();
 	const videoContainer = useRef(null);
 	const myRef = useRef();
+	const { assetToViewObject } = useContext(AssetContext);
 
 	const onErrorEvent = (event) => {
 		// Extract the shaka.util.Error object from the event.
@@ -23,12 +25,10 @@ const VideoPLayer = () => {
 	const goBack = () => {
 		myRef.current.click();
 	};
-	const url = window.location.href;
-	const assetID = url.split("").pop();
+
 	const filtered = dummyVideoList.filter((selected) => {
-		return selected.id === Number(assetID);
+		return selected.id === Number(assetToViewObject);
 	});
-	var player;
 	useEffect(() => {
 		//Link to MPEG-DASH video
 		var manifestUri = filtered[0].videoURL;
@@ -38,7 +38,7 @@ const VideoPLayer = () => {
 		const videoContainer5 = videoContainer.current;
 
 		//Initialize shaka player
-		player = new shaka.Player(video);
+		const player = new shaka.Player(video);
 
 		//Setting UI configuration JSON object
 		const uiConfig = {};

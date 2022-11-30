@@ -1,13 +1,9 @@
 import React from "react";
-import SpatialNavigation, {
-	Focusable,
-	FocusableSection,
-} from "react-js-spatial-navigation";
+import SpatialNavigation, { Focusable } from "react-js-spatial-navigation";
 import { dummyVideoList } from "./data";
 
 import "shaka-player/dist/controls.css";
 const shaka = require("shaka-player/dist/shaka-player.ui.js");
-
 //Creating class component
 class VideoPlayer extends React.PureComponent {
 	constructor(props) {
@@ -28,10 +24,9 @@ class VideoPlayer extends React.PureComponent {
 		this.pauseVideo = this.pauseVideo.bind(this);
 		this.fastForward = this.fastForward.bind(this);
 		this.rewindVid = this.rewindVid.bind(this);
+		this.restartVid = this.restartVid.bind(this);
 
 		this.myRef = React.createRef();
-		// var playBtn;
-		var video;
 	}
 
 	onErrorEvent(event) {
@@ -69,21 +64,21 @@ class VideoPlayer extends React.PureComponent {
 		const uiControls = {};
 
 		//Configuring elements to be displayed on video player control panel
-		uiConfig["controlPanelElements"] = [
-			"play_pause",
-			"rewind",
-			"fast_forward",
-			"mute",
-			"volume",
-			"time_and_duration",
-			"fullscreen",
-			"overflow_menu",
-			"cast",
-		];
-		uiConfig["playbackRates"] = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
-		uiConfig["fastForwardRates"] = [2, 4, 8, 1];
-		uiConfig["rewindRates"] = [-1, -2, -4, -8];
-		uiControls["Controls"] = ["BigPLayButton"];
+		// uiConfig["controlPanelElements"] = [
+		// 	"play_pause",
+		// 	"rewind",
+		// 	"fast_forward",
+		// 	"mute",
+		// 	"volume",
+		// 	"time_and_duration",
+		// 	"fullscreen",
+		// 	"overflow_menu",
+		// 	"cast",
+		// ];
+		// uiConfig["playbackRates"] = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
+		// uiConfig["fastForwardRates"] = [2, 4, 8, 1];
+		// uiConfig["rewindRates"] = [-1, -2, -4, -8];
+		// uiControls["Controls"] = ["BigPLayButton"];
 
 		//Setting up shaka player UI
 		const ui = new shaka.ui.Overlay(player, videoContainer, this.video);
@@ -103,11 +98,8 @@ class VideoPlayer extends React.PureComponent {
 				console.log("The video has now been loaded!");
 			})
 			.catch(this.onError); // onError is executed if the asynchronous load fails.
-		// this.playBtn = player;
-		// console.log(ui.play());
 	}
 	playVideo() {
-		// console.log(this.playBtn.play());
 		this.video.play();
 	}
 	pauseVideo() {
@@ -120,6 +112,9 @@ class VideoPlayer extends React.PureComponent {
 		if (this.video.currentTime >= 5) {
 			return (this.video.currentTime -= 5);
 		}
+	}
+	restartVid() {
+		this.video.currentTime = 0;
 	}
 
 	render() {
@@ -151,6 +146,9 @@ class VideoPlayer extends React.PureComponent {
 					</Focusable>
 					<Focusable onClickEnter={this.rewindVid}>
 						<button>Rewind</button>
+					</Focusable>
+					<Focusable onClickEnter={this.restartVid}>
+						<button>Restart</button>
 					</Focusable>
 				</div>
 			</SpatialNavigation>

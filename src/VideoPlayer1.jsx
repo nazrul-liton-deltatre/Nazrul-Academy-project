@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import SpatialNavigation, { Focusable } from "react-js-spatial-navigation";
 import { dummyVideoList } from "./data";
 
@@ -7,6 +8,8 @@ import { AssetContext } from "./AssetContext";
 const shaka = require("shaka-player/dist/shaka-player.ui.js");
 
 const VideoPLayer = () => {
+	const navigate = useNavigate();
+
 	const videoComponent = useRef();
 	const videoContainer = useRef(null);
 	const myRef = useRef();
@@ -22,13 +25,10 @@ const VideoPLayer = () => {
 		console.error("Error code", error.code, "object", error);
 	};
 
-	const goBack = () => {
-		myRef.current.click();
-	};
-
 	const filtered = dummyVideoList.filter((selected) => {
 		return selected.id === Number(assetToViewObject);
 	});
+
 	useEffect(() => {
 		//Link to MPEG-DASH video
 		var manifestUri = filtered[0].videoURL;
@@ -95,7 +95,7 @@ const VideoPLayer = () => {
 			</Focusable>
 			<div className="video-bottom-nav">
 				<a href="/" ref={myRef}>
-					<Focusable onClickEnter={goBack}>
+					<Focusable onClickEnter={() => navigate("/", { replace: true })}>
 						<button>Back</button>
 					</Focusable>
 				</a>

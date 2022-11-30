@@ -7,42 +7,8 @@ const shaka = require("shaka-player/dist/shaka-player.ui.js");
 
 const VideoPLayer = () => {
 	const videoComponent = useRef();
-	const videoContainer = useRef();
+	const videoContainer = useRef(null);
 	const myRef = useRef();
-
-	const url = window.location.href;
-	const assetID = url.split("").pop();
-	const filtered = dummyVideoList.filter((selected) => {
-		return selected.id === Number(assetID);
-	});
-	const video = videoComponent.current;
-
-	useEffect(() => {
-		//Link to MPEG-DASH video
-		var manifestUri = filtered[0].videoURL;
-
-		//Getting reference to video and video container on DOM
-		const videoContainer = videoContainer.current;
-
-		//Initialize shaka player
-		var player = new shaka.Player(video);
-
-		//Setting up shaka player UI
-		const ui = new shaka.ui.Overlay(player, videoContainer, video);
-
-		ui.configure(); //configure UI
-		ui.getControls();
-
-		// Try to load a manifest.
-		// This is an asynchronous process.
-		player
-			.load(manifestUri)
-			.then(function () {
-				// This runs if the asynchronous load is successful.
-				console.log("The video has now been loaded!");
-			})
-			.catch(onError); // onError is executed if the asynchronous load fails.
-	}, []);
 
 	const onErrorEvent = (event) => {
 		// Extract the shaka.util.Error object from the event.
@@ -57,23 +23,63 @@ const VideoPLayer = () => {
 	const goBack = () => {
 		myRef.current.click();
 	};
+	const url = window.location.href;
+	const assetID = url.split("").pop();
+	const filtered = dummyVideoList.filter((selected) => {
+		return selected.id === Number(assetID);
+	});
+	var player;
+	useEffect(() => {
+		//Link to MPEG-DASH video
+		var manifestUri = filtered[0].videoURL;
+
+		//Getting reference to video and video container on DOM
+		const video = videoComponent.current;
+		const videoContainer5 = videoContainer.current;
+
+		//Initialize shaka player
+		player = new shaka.Player(video);
+
+		//Setting UI configuration JSON object
+		const uiConfig = {};
+		const uiControls = {};
+
+		//Setting up shaka player UI
+		const ui = new shaka.ui.Overlay(player, videoContainer5, video);
+
+		ui.configure(uiConfig); //configure UI
+		ui.getControls(uiControls);
+
+		// Listen for error events.
+		player.addEventListener("error", onErrorEvent);
+
+		// Try to load a manifest.
+		// This is an asynchronous process.
+		player
+			.load(manifestUri)
+			.then(function () {
+				// This runs if the asynchronous load is successful.
+				console.log("The video has now been loaded!");
+			})
+			.catch(onError); // onError is executed if the asynchronous load fails
+	}, []);
 
 	const playVideo = () => {
-		video.play();
+		videoComponent.current.play();
 	};
 	const pauseVideo = () => {
-		video.pause();
+		videoComponent.current.pause();
 	};
 	const fastForward = () => {
-		video.currentTime += 10;
+		videoComponent.current.currentTime += 10;
 	};
 	const rewindVid = () => {
-		if (video.currentTime >= 5) {
-			return (video.currentTime -= 5);
+		if (videoComponent.current.currentTime >= 5) {
+			return (videoComponent.current.currentTime -= 5);
 		}
 	};
 	const restartVid = () => {
-		video.currentTime = 0;
+		videoComponent.current.currentTime = 0;
 	};
 
 	return (

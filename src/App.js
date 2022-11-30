@@ -2,7 +2,7 @@ import "./App.css";
 import "shaka-player/dist/controls.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import VideoPlayer from "./VideoPlayer";
+import VideoPlayer from "./VideoPlayer1";
 import HomePage from "./HomePage";
 
 function App() {

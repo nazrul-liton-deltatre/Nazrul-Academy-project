@@ -1,6 +1,6 @@
 import "./styling/App.css";
 import "shaka-player/dist/controls.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import React, { createContext, useState } from "react";
 
 import VideoPlayer from "./components/VideoPlayer1";

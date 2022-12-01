@@ -7,7 +7,6 @@ import { dummyVideoList } from "../data/data";
 import { AssetContext } from "../AssetContext";
 
 const ItemRow = ({ rowTitle }) => {
-	const [active, setActive] = useState(false);
 	const { setAssetToViewObject } = useContext(AssetContext);
 	const navigateTo = useNavigate();
 
@@ -20,19 +19,16 @@ const ItemRow = ({ rowTitle }) => {
 		<>
 			<SpatialNavigation>
 				<Row className="row-top">
-					<Focusable>
-						<span>{rowTitle}</span>
-					</Focusable>
+					<span>{rowTitle}</span>
 				</Row>
 				<Row>
 					{dummyVideoList.map((anObjectMapped, i) => {
 						const id = anObjectMapped.id;
-						const urlToNavigateTo = `/video` + id;
 						return (
 							<Col xl={2} key={anObjectMapped.id} className="row-list-item">
 								<Focusable onClickEnter={() => watchVideo(id)}>
 									<img
-										className="list-item"
+										className={`list-item`}
 										tabIndex={anObjectMapped.id}
 										src={anObjectMapped.imgUrl}
 										alt=""

@@ -1,5 +1,5 @@
 import exampleVid from "../assets/videoplayback.mp4";
-import exampleImg from "../assets/DiegoPoster.jpeg";
+import exampleImg from "../assets/Fballpic.jpg";
 import exampleImg2 from "../assets/spiderman.jpeg";
 
 export const dummyVideoList = [

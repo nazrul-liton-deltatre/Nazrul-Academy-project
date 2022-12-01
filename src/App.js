@@ -13,22 +13,26 @@ function App() {
 	const [assetToViewObject, setAssetToViewObject] = useState();
 
 	return (
-		<AssetContext.Provider value={{ assetToViewObject, setAssetToViewObject }}>
-			<Router>
-				<Routes>
-					<Route
-						path="/video:id"
-						assetToViewObject={assetToViewObject}
-						element={<VideoPlayer />}
-					/>
-					<Route
-						path="/"
-						assetToViewObject={assetToViewObject}
-						element={<HomePage />}
-					/>
-				</Routes>
-			</Router>
-		</AssetContext.Provider>
+		<>
+			<AssetContext.Provider
+				value={{ assetToViewObject, setAssetToViewObject }}
+			>
+				<Router>
+					<Routes>
+						<Route
+							path="/video:id"
+							assetToViewObject={assetToViewObject}
+							element={<VideoPlayer />}
+						/>
+						<Route
+							path="/"
+							assetToViewObject={assetToViewObject}
+							element={<HomePage />}
+						/>
+					</Routes>
+				</Router>
+			</AssetContext.Provider>
+		</>
 	);
 }
 

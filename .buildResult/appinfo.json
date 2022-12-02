@@ -1,0 +1,24 @@
+{
+	"id": "com.deltatre.academy",
+	"version": "1.0.0",
+	"vendor": "Academy Productions",
+	"type": "web",
+	"main": "index.html",
+	"title": "MovieFlex",
+	"icon": "icon-80.png",
+	"largeIcon": "icon-130.png",
+	"bgImage": "logo-axis-splash-bg.png",
+	"splashBackground": "logo-axis-splash-bg.png",
+	"iconColor": "#0099f7",
+	"transparent": false,
+	"visible": true,
+	"uiRevision": 2,
+	"resolution": "1920x1080",
+	"disableBackHistoryAPI": true,
+	"class": {
+		"hidden": false
+	},
+	"accessibility": {
+		"supportsAudioGuidance": true
+	}
+}

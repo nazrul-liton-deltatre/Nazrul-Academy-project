@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "./static/css/main.083d1080.css",
+    "main.js": "./static/js/main.fd6696e0.js",
+    "static/media/videoplayback.mp4": "./static/media/videoplayback.2752e665a1d1a126df94.mp4",
+    "static/media/classicHorror.jpeg": "./static/media/classicHorror.414d090881960b27bde6.jpeg",
+    "index.html": "./index.html",
+    "main.083d1080.css.map": "./static/css/main.083d1080.css.map",
+    "main.fd6696e0.js.map": "./static/js/main.fd6696e0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.083d1080.css",
+    "static/js/main.fd6696e0.js"
+  ]
+}

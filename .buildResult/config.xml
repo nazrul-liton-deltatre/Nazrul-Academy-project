@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets"
+        id="http://www.deltatre.com/Nazrul-academy" version="6.6.0" viewmodes="maximized">
+    <access origin="*" subdomains="true"></access>
+    <tizen:app-control>
+        <tizen:src name="index.html" reload="disable"/>
+        <tizen:operation name="http://samsung.com/appcontrol/operation/eden_resume"/>
+    </tizen:app-control>
+    <tizen:application id="Deltatre00.Axis" package="Deltatre00" required_version="2.3"/>
+    <content src="index.html"/>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <feature name="http://tizen.org/feature/network.wifi"/>
+    <icon src="icon-512.png"/>
+    <tizen:metadata key="http://samsung.com/tv/metadata/devel.api.version" value="2.4"/>
+    <tizen:metadata key="http://samsung.com/tv/metadata/use.voiceguide" value="false" />
+    
+    <tizen:metadata key="http://developer.samsung.com/tizen/metadata/bixby/companion-app/version" value="10000"/>
+    <tizen:metadata key="http://developer.samsung.com/tizen/metadata/bixby/sdk/version" value="v1.0-beta.1.4"/>
+    <tizen:metadata key="http://developer.samsung.com/tizen/metadata/bixby/companion-app/action-id" value="tvMediaControl.Restart,tvMediaControl.TrackNext,tvMediaControl.TrackPrevious,tvMediaControl.SkipBackward,tvMediaControl.SkipForward,tvMediaControl.SetPlayPosition,tvMediaControl.SetSubtitle,tvMediaControl.SetShuffle,tvMediaControl.SetScreenFit,tvMediaControl.Screenfit,tvMediaControl.SetSubtitle,tvMediaControl.SetZoom,tvMediaControl.Rotate,tvMediaControl.Set360Mode,tvMediaControl.ContinueWatching,tvMediaControl.SetRepeat,tvMediaControl.TrackPrevious,tvLauncher.Open"/>
+    <name>Axis</name>
+    <tizen:profile name="tv-samsung"/>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
+    <tizen:privilege name="http://tizen.org/privilege/content.read"/>
+    <tizen:privilege name="http://tizen.org/privilege/content.write"/>
+    <tizen:privilege name="http://developer.samsung.com/privilege/drmplay"/>
+    <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
+    <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+    <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <tizen:privilege name="http://developer.samsung.com/privilege/avplay"/>
+    <tizen:privilege name="http://developer.samsung.com/privilege/productinfo"/>
+    <tizen:privilege name="http://developer.samsung.com/privilege/network.public"/>
+    <tizen:setting screen-orientation="auto-rotation" background-support="disable" encryption="disable" hwkey-event="enable"/>
+</widget>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import postureImage from "../assets/classicHorror.jpeg";
 import SpatialNavigation, { Focusable } from "react-js-spatial-navigation";
 import { AssetContext } from "../AssetContext";
@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 const NavBar = () => {
 	const navigateTo = useNavigate();
 	const { setAssetToViewObject } = useContext(AssetContext);
+	const [cssVal, setCssVal] = useState("");
+	const [cssVal1, setCssVal1] = useState("");
+	const [cssVal2, setCssVal2] = useState("");
 
 	const watchVideo = (objectId) => {
 		setAssetToViewObject(objectId);
@@ -21,13 +24,33 @@ const NavBar = () => {
 					<div className="nav-block">
 						<ul>
 							<li style={{ color: "red" }}>Movieflix</li>
-							<Focusable onClickEnter={() => navigateTo("/")}>
-								<a href="/">
+							<Focusable
+								onFocus={() => {
+									console.log("hello");
+									setCssVal("hide");
+								}}
+								onUnfocus={() => {
+									console.log("hello");
+									setCssVal("");
+								}}
+								onClickEnter={() => navigateTo("/")}
+							>
+								<a href="/" className={cssVal}>
 									<li>home</li>
 								</a>
 							</Focusable>
-							<Focusable onClickEnter={() => navigateTo("/")}>
-								<a href="/">
+							<Focusable
+								onFocus={() => {
+									console.log("hello");
+									setCssVal1("hide");
+								}}
+								onUnfocus={() => {
+									console.log("hello");
+									setCssVal1("");
+								}}
+								onClickEnter={() => navigateTo("/")}
+							>
+								<a href="/" className={cssVal1}>
 									<li>most trending</li>
 								</a>
 							</Focusable>
@@ -41,7 +64,18 @@ const NavBar = () => {
 							blanditiis veniam, error officia quam cupiditate, praesentium,
 							architecto tempora in molestias quo hic nulla quos?
 						</span>
-						<Focusable onClickEnter={() => watchVideo(1)}>
+						<Focusable
+							onFocus={() => {
+								console.log("hello");
+								setCssVal2("hide");
+							}}
+							onUnfocus={() => {
+								console.log("hello");
+								setCssVal2("");
+							}}
+							onClickEnter={() => watchVideo(1)}
+							className={cssVal2}
+						>
 							<button>Watch Now</button>
 						</Focusable>
 					</div>

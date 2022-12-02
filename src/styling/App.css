@@ -104,3 +104,12 @@
   width: 200px;
   margin-top: 10px;
 }
+
+.hide li {
+  font-size: 35px !important;
+  /* display: none; */
+}
+
+.hide button {
+  font-size: 20px;
+}

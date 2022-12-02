@@ -9,6 +9,7 @@ import { AssetContext } from "../AssetContext";
 const ItemRow = ({ rowTitle }) => {
 	const { setAssetToViewObject } = useContext(AssetContext);
 	const navigateTo = useNavigate();
+	const [cssVal, setCssVal] = useState("");
 
 	const watchVideo = (objectId) => {
 		setAssetToViewObject(objectId);
